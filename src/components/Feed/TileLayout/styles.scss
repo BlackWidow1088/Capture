@@ -1,0 +1,46 @@
+@import '../../../variables';
+.fp-tile-layout {
+    position:relative;
+    width: $fp-feed-image-width;
+    img {
+        padding: 1px;
+        vertical-align: middle;
+        width: 100%
+    }
+}
+
+.fp-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1px;
+};
+
+.fp-landscape-column {
+    flex: 100%;
+    max-width: 100%;
+    padding: 1px;
+}
+
+.fp-landscape-sub-column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 1px;
+}
+
+.fp-portrait-column {
+  flex: 50%;
+  max-width: 100%;
+  padding: 1px;
+}
+
+.fp-portrait-sub-column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 1px;
+  }
+
+.fp-tile-layout-next-image {
+    position: absolute;
+    top: -15px;
+    left: 290px;
+}

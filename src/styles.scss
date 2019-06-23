@@ -1,0 +1,41 @@
+
+.fp-display-inline {
+    display: inline;
+}
+.fp-position-absolute {
+    position: absolute;
+}
+.fp-position-relative {
+    position: relative;
+}
+
+.fp-float-r {
+    float:right;
+}
+
+.fp-margin-l-12 {
+    margin-left: 12px;
+}
+.fp-margin-l-5 {
+    margin-left: 5px;
+}
+
+.fp-visibility-hide {
+    visibility: hidden;
+}
+
+.fp-circle {
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    background-color: #3b5998;
+    border-radius: 50%;
+    display: inline-block !important;
+    border-color: #3b5998;
+    border-width: 1px;
+    border-style: solid;
+
+    &:hover {
+        background-color: white;
+    }
+}

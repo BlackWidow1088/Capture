@@ -1,0 +1,19 @@
+.fp-header {
+}
+.fp-avatar {
+    position: absolute;
+    margin: 12px;
+}
+.fp-header-bar {
+    margin: 0px 0px 0px 48px;
+    padding: 16px 12px 12px 12px;
+}
+.fp-header-title {
+    font-size: 0.8rem;
+}
+.fp-header-subheader {
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
+

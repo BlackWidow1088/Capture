@@ -1,0 +1,9 @@
+@import '../../../variables';
+.fp-background-map-layout {
+    position: fixed;
+    top: $fp-header-height;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    opacity:0.5;
+}

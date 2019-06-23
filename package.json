@@ -1,0 +1,66 @@
+{
+  "name": "fakebook",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "change-case": "^3.1.0",
+    "react-scripts": "3.0.1",
+    "redux-devtools": "^3.5.0",
+    "redux-devtools-dock-monitor": "^1.1.3",
+    "redux-devtools-log-monitor": "^1.4.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-brands-svg-icons": "^5.9.0",
+    "@fortawesome/free-regular-svg-icons": "^5.9.0",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "@material-ui/core": "^4.1.1",
+    "@material-ui/icons": "^4.2.0",
+    "aphrodite": "^2.3.1",
+    "classnames": "^2.2.6",
+    "faker": "^4.1.0",
+    "lodash.filter": "4.6.0",
+    "lodash.find": "4.6.0",
+    "lodash.findkey": "4.6.0",
+    "lodash.flow": "3.5.0",
+    "lodash.padstart": "4.6.1",
+    "lodash.pick": "4.4.0",
+    "lodash.pickby": "4.6.0",
+    "lodash.range": "3.2.0",
+    "lodash.sample": "4.2.1",
+    "lodash.samplesize": "4.2.0",
+    "lodash.sortby": "4.7.0",
+    "lodash.values": "4.3.0",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-google-maps": "^9.4.5",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.3",
+    "reselect": "^4.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "add-component": "NODE_ENV=development node tools/add-component/transpile.js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
