@@ -1,18 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.css';
 import Avatar from '@material-ui/core/Avatar';
+import { findUserName } from '../../../utils/scrap.utils';
+import { formatPostTimestamp } from '../../../utils/time.utils';
+
 class Header extends React.Component {
-    render = () =>
-        <div className="fp-header">
-            <div className="fp-avatar">
-            <Avatar aria-label="Recipe" alt="Natalie Osmann" src={process.env.PUBLIC_URL + '/data/fotos/NatalieOsmann/nataly_osmann.png'} />
+    render = () => {
+        const formattedName = findUserName(this.props.user.username);
+        return (
+            <div className="fp-header">
+                <div className="fp-avatar">
+                    <Avatar aria-label="Recipe" alt={this.props.user.username} src={`${process.env.PUBLIC_URL}/data/fotos/${formattedName}/${this.props.user.userpic}`} />
+                </div>
+                <div className="fp-header-bar">
+                    <div className="fp-header-title">{this.props.user.username}</div>
+                    {  this.props.date && <div className="fp-header-subheader">{formatPostTimestamp(this.props.date)}</div>}
+                    {  this.props.data && <div className="fp-header-subheader">{this.props.data}</div>}
+                </div>
             </div>
-            <div className="fp-header-bar">
-                <div className="fp-header-title">Natalie Osmann</div>
-                <div className="fp-header-subheader">21 June 2019</div>
-            </div>
-        </div>
+        )
+    }
 }
+
+Header.propTypes = {
+    user: PropTypes.shape({
+        uid: PropTypes.string.isRequired,
+        username: PropTypes.string.isRequired,
+        userpic: PropTypes.string.isRequired
+    }).isRequired,
+    date: PropTypes.instanceOf(Date),
+    data: PropTypes.string
+};
 
 export default Header
 

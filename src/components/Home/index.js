@@ -1,18 +1,34 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import { connect } from 'react-redux';
 import Feed from '../Feed';
+import { getFeed, updateActiveFeed } from '../../actions';
 
 
-const Home = () => {
-  return (
-    <div>
+class Home extends React.Component {
+  componentWillMount() {
+    this.props.getFeed();
+    this.props.updateActiveFeed({ feedId: this.props.feed[0].id, photoId: null, user: this.props.feed[0].user });
+  }
+  componentWillUnmount() {
+    this.props.updateActiveFeed(null);
+  }
+  render() {
+    return (
       <div>
-        <Feed mode='landscape' fotos={['Screenshot (25).png', 'Screenshot (25).png', 'Screenshot (26).png', 'Screenshot (27).png', 'Screenshot (28).png']}/>
-        <Feed mode='portrait' fotos={['portrait.png', 'Screenshot (49).png', 'Screenshot (30).png','Screenshot (49).png',  'Screenshot (33).png', 'Screenshot (32).png']}/>
+        <div>
+          {
+            this.props.feed && this.props.feed.map(item => 
+            <Feed 
+            key={item.id}
+            feedId={item.id}
+            />)
+          }
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 Home.propTypes = {
 
@@ -21,5 +37,7 @@ Home.propTypes = {
 Home.defaultProps = {
 
 };
-
-export default Home;
+const mapStateToProps = (state, ownProps) => ({
+  feed: state.feed.all
+})
+export default connect(mapStateToProps, { getFeed, updateActiveFeed })(Home);

@@ -1,6 +1,15 @@
+@import "~video-react/styles/scss/video-react";
+@import './variables';
+
 
 .fp-display-inline {
     display: inline;
+}
+.fp-display-flex {
+    display:flex;
+}
+.fp-display-none {
+    display:none;
 }
 .fp-position-absolute {
     position: absolute;
@@ -22,20 +31,40 @@
 
 .fp-visibility-hide {
     visibility: hidden;
+    opacity:0;
+}
+.fp-opacity-0 {
+    opacity:0;
 }
 
 .fp-circle {
     cursor: pointer;
     height: 8px;
     width: 8px;
-    background-color: #3b5998;
+    background-color: $fp-primary-blue;
     border-radius: 50%;
     display: inline-block !important;
-    border-color: #3b5998;
+    border-color: $fp-primary-blue;
     border-width: 1px;
     border-style: solid;
 
     &:hover {
         background-color: white;
     }
+}
+
+.fp-image {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fp-image-hide {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fp-img-border {
+    border-style: solid;
+    border-width: 5px;
+    border-color: $fp-primary-blue;
 }

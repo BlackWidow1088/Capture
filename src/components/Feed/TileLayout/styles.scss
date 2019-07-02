@@ -1,46 +1,54 @@
 @import '../../../variables';
 .fp-tile-layout {
+    margin:10px;
     position:relative;
     width: $fp-feed-image-width;
     img {
-        padding: 1px;
         vertical-align: middle;
-        width: 100%
+        width: 100%;
     }
 }
 
 .fp-row {
     display: flex;
     flex-wrap: wrap;
-    padding: 1px;
+    .fp-column img {
+        object-fit: cover; /* Do not scale the image */
+        object-position: center; 
+    }
+    .fp-column:nth-child(1) img {
+        width: 256px;
+        height: 256px;
+        margin: 1px 1px 2px 0px
+    }
+    .fp-column:nth-child(2) img {
+        &:nth-child(1) {
+            width: 256px;
+            height: 171px;
+            margin: 1px 0px 1px 1px
+        }
+        &:nth-child(2){
+            width: 256px;
+            height: 172px;
+            margin: 0px 0px 0px 1px
+        }
+        &:nth-child(3){
+            width: 256px;
+            height: 172px;
+            margin: 1px 0px 0px 1px
+        } 
+
+    }
 };
 
-.fp-landscape-column {
-    flex: 100%;
-    max-width: 100%;
-    padding: 1px;
-}
-
-.fp-landscape-sub-column {
-    flex: 25%;
-    max-width: 25%;
-    padding: 1px;
-}
-
-.fp-portrait-column {
+.fp-column {
   flex: 50%;
   max-width: 100%;
-  padding: 1px;
 }
 
-.fp-portrait-sub-column {
-    flex: 25%;
-    max-width: 25%;
-    padding: 1px;
-  }
 
 .fp-tile-layout-next-image {
     position: absolute;
     top: -15px;
-    left: 290px;
+    left: 249px;
 }

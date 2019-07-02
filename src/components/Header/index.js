@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 
@@ -14,6 +15,7 @@ import MaxWidthWrapper from '../MaxWidthWrapper';
 import SquareLogo from '../SquareLogo';
 
 import styles from './styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Header = ({
   activeFlyout,
@@ -44,20 +46,23 @@ const Header = ({
   }
 
   return (
-      <div className={css(styles.headerContainer)}>
-        <div className={css(styles.header)}>
-          <MaxWidthWrapper mergeStyles={styles.headerContents}>
-            <div className={css(styles.headerSearch)}>
-              <SquareLogo mergeStyles={styles.logo} />
-              <input className={css(styles.searchInput)} />
-            </div>
+    <div className={css(styles.headerContainer)}>
+      <div className={css(styles.header)}>
+        <MaxWidthWrapper mergeStyles={styles.headerContents}>
+          <div className={css(styles.headerSearch)}>
+            <SquareLogo mergeStyles={styles.logo} />
+            <input className={css(styles.searchInput)} />
+            <Link to='/search'>
+            <FontAwesomeIcon icon={['fas', 'search']} size='2x' color='white' style={{ margin: '9px', sursor: 'pointer' }} />
+            </Link>
+          </div>
 
-            {headerNavigation}
+          {headerNavigation}
 
-            {activeFlyout && <Flyout />}
-          </MaxWidthWrapper>
-        </div>
+          {activeFlyout && <Flyout />}
+        </MaxWidthWrapper>
       </div>
+    </div>
   );
 };
 

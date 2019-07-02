@@ -11,6 +11,7 @@ export const mediumGrey = '#90949c';
 export const darkGrey = '#333333';
 export const navy = '#1d2129';
 export const primaryColor = '#3b5998';
+// export const primaryColor = '#76b900';
 export const darkerPrimaryColor = '#29487d';
 export const alertColor = '#fa3e3e';
 
@@ -18,3 +19,4 @@ export const maxWidth = 850;
 export const maxWidthPx = `${maxWidth}px`;
 
 export const headerHeight = '43px';
+export const feedImageWidth = '514px';

@@ -5,10 +5,16 @@
     font-family: Roboto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     margin: 8px auto;
-    width: $fp-feed-image-width;
+    width: $fp-feed-width;
     transition: 0.3s;
+    border-radius: 5%;
 }
 .fp-feed:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.fp-feed-back-arrow {
+    float:right;
+    left: -40px;
+    top: 10px;
+}

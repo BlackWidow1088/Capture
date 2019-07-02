@@ -16,6 +16,13 @@ export const MARK_ALL_NOTIFICATIONS_AS_READ = 'MARK_ALL_NOTIFICATIONS_AS_READ';
 export const TOGGLE_FLYOUT = 'TOGGLE_FLYOUT';
 export const VIEW_PROFILE_PAGE = 'VIEW_PROFILE_PAGE';
 
+// FEED Actions
+export const GET_FEED = 'GET_FEED';
+export const UPDATE_ACTIVE_FEED = 'UPDATE_ACTIVE_FEED';
+export const GET_RELATED_FEED = 'GET_RELATED_FEED';
+
+// MAP Actions
+export const UPDATE_MAP = 'UPDATE_MAP';
 
 export const fetchUserFriendsRequest = () => ({
   type: FETCH_USER_FRIENDS_REQUEST,
@@ -96,4 +103,25 @@ export const toggleFlyout = flyout => ({
 export const viewProfilePage = ({ userName }) => ({
   type: VIEW_PROFILE_PAGE,
   userName,
+})
+
+
+// FEED
+export const getFeed = () => ({
+  type: GET_FEED
+})
+export const updateActiveFeed = payload => ({
+    type: UPDATE_ACTIVE_FEED,
+    payload
+});
+export const getRelatedFeed = feedId => ({
+  type: GET_RELATED_FEED,
+  feedId
+})
+
+
+// MAP
+export const updateMap = payload => ({
+  type: UPDATE_MAP,
+  payload
 })

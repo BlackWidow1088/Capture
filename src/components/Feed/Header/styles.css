@@ -2,11 +2,11 @@
 }
 .fp-avatar {
     position: absolute;
-    margin: 12px;
+    margin: 5px 12px 12px 5px;
 }
 .fp-header-bar {
     margin: 0px 0px 0px 48px;
-    padding: 16px 12px 12px 12px;
+    padding: 9px 12px 12px 5px;
 }
 .fp-header-title {
     font-size: 0.8rem;

@@ -1,0 +1,54 @@
+.fp-toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 34px;
+    margin-top: 4px;
+  }
+
+  .fp-toggle-active {
+    background: #2196F3;
+  }
+  
+  .fp-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s;
+    input {
+        width:0px;
+        height:0px;
+        opacity:0;
+    }
+  }
+  
+  .fp-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 1px;
+    border-radius: 50%;
+    background-color: white;
+    transition: .4s;
+  }
+
+  .fp-toggle-slider-active {
+    transform: translateX(26px);
+    border-radius: 34px;
+  }
+  
+//   /* Rounded sliders */
+//   .fp-toggle-slider-round {
+
+//   }
+  
+//   .fp-toggle-slider-round:before {
+
+//   }

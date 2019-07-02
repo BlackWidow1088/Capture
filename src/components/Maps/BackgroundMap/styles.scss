@@ -2,8 +2,42 @@
 .fp-background-map-layout {
     position: fixed;
     top: $fp-header-height;
+    left: 1022px;
+    bottom: 0px;
+    right: 0px;
+}
+
+.fp-background-map-complete-layout {
+    position: fixed;
+    top: $fp-header-height;
     left: 0px;
     bottom: 0px;
     right: 0px;
-    opacity:0.5;
+}
+
+// .fp-background-map-layout {
+// // round map-layout
+// position: fixed;
+// top: 160px;
+// left: 45px;
+// /* bottom: 0px; */
+// /* right: 0px; */
+// border-radius: 50%;
+// overflow: hidden;
+// }
+
+.fp-bg-map-marker-cluster {
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: 100%;
+        border-style: solid;
+        border-color: $fp-primary-blue;
+        border-width: 3px;
+        border-radius: 50%;
+    }
+    div {
+        z-index: 5;
+        color: white;
+    }
 }

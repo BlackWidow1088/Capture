@@ -9,13 +9,14 @@ import App from './components/App';
 import Header from './components/Header';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import Search from './components/Search';
 import BackgroundMap from './components/Maps/BackgroundMap';
 import WindowEvents from './components/WindowEvents';
 import DevTools from './components/DevTools';
 
 import './styles.scss';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHeart, faThumbsUp, faLaughBeam, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faThumbsUp, faLaughBeam, faEllipsisH, faAngleLeft, faTimesCircle, faVideo, faCamera, faSearch } from '@fortawesome/free-solid-svg-icons';
 import {
   faThumbsUp as faThumbsUpRegular,
   faShareSquare as faShareSquareRegular,
@@ -23,7 +24,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 
 library.add(
-  faHeart, faThumbsUp, faLaughBeam, faEllipsisH,
+  faHeart, faThumbsUp, faLaughBeam, faEllipsisH, faAngleLeft, faTimesCircle, faVideo, faCamera, faSearch,
   faThumbsUpRegular, faShareSquareRegular, faCommentAlt
 )
 
@@ -38,7 +39,8 @@ render(
         <Header />
 
           <Route exact path="/" component={Home} />
-          <Route path="/:userName" component={Profile} />
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/:userName" component={Profile} />
 
         <WindowEvents />
 
