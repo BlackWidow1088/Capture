@@ -1,27 +1,28 @@
 @import '../../../variables';
-.fp-tile-layout {
-    margin:10px;
+.fp-c-tile-layout {
+    // margin:10px;
     position:relative;
-    width: $fp-feed-image-width;
+    padding: 5px 5px 10px 5px;
+    width: $fp-c-feed-image-width;
     img {
         vertical-align: middle;
         width: 100%;
     }
 }
 
-.fp-row {
+.fp-l-tile-layout__row {
     display: flex;
     flex-wrap: wrap;
-    .fp-column img {
+    .fp-l-tile-layout__column img {
         object-fit: cover; /* Do not scale the image */
         object-position: center; 
     }
-    .fp-column:nth-child(1) img {
+    .fp-l-tile-layout__column:nth-child(1) img {
         width: 256px;
         height: 256px;
         margin: 1px 1px 2px 0px
     }
-    .fp-column:nth-child(2) img {
+    .fp-l-tile-layout__column:nth-child(2) img {
         &:nth-child(1) {
             width: 256px;
             height: 171px;
@@ -41,14 +42,13 @@
     }
 };
 
-.fp-column {
+.fp-l-tile-layout__column {
   flex: 50%;
   max-width: 100%;
 }
 
 
-.fp-tile-layout-next-image {
+.fp-c-tile-layout__next-image {
     position: absolute;
-    top: -15px;
     left: 249px;
 }

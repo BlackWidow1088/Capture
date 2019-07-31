@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { logInRequest } from '../../actions';
+import { logInRequest, fetchUserFeed } from '../../actions';
 
 
 class App extends Component {
@@ -24,6 +24,10 @@ class App extends Component {
   }
 
   render() {
+    // TODO: fetch the feed inside the route validator for the home page.
+    if(this.props.currentUserId) {
+      this.props.fetchUserFeed(this.props.currentUserId);
+    }
     return (
       <div> 
         {this.props.children}
@@ -35,5 +39,8 @@ class App extends Component {
 App.propTypes = {
   children: PropTypes.node,
 };
+const mapStateToProps = (state, ownProps) => ({
+  currentUserId: state.auth.currentUserId
+})
 
-export default connect(null, { logInRequest })(App);
+export default connect(mapStateToProps, { logInRequest, fetchUserFeed })(App);

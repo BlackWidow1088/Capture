@@ -1,0 +1,36 @@
+@import '../../variables';
+.fp-c-related-feed {
+    // padding: 2px 25px 25px 25px;
+    border-radius: 5%;
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
+    &.fp-is-hidden {
+      transition: visibility 0.6s ease-in-out, opacity 0.6s ease-in-out
+    }
+}
+
+.fp-l-related-feed__container {
+  grid-template-columns: auto auto auto;
+}
+.fp-c-related-feed__image {
+  object-fit: cover; /* Do not scale the image */
+  object-position: center; 
+  width: 96px;
+  height: 96px;
+  margin: 1px;
+
+  &:hover {
+    cursor: pointer;
+    border-style:solid;
+    border-width: 2px;
+    border-color: white;
+  }
+  &.fp-is-active {
+   border-style: solid;
+   border-width: 5px;
+   border-color: $fp-primary-blue;
+  }
+}
+
+  
+  

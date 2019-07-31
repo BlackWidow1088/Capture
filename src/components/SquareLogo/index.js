@@ -1,18 +1,19 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { css } from 'aphrodite';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import SpriteIcon from '../SpriteIcon';
 import styles from './styles';
 
 
-const SquareLogo = ({ mergeStyles }) => {
+const SquareLogo = ({ mergeStyles, searchJourney, icon }) => {
   return (
-    <Link to="/" className={css(styles.squareLogoContainer, mergeStyles)}>
-      <SpriteIcon name="squareLogo" />
-    </Link>
+    <div onClick={searchJourney} className={css(styles.squareLogoContainer)}>
+      {/* <SpriteIcon name="squareLogo" /> */}
+      <FontAwesomeIcon icon={icon} size='3x' color={'#29487d'} />
+    </div>
   );
 };
 

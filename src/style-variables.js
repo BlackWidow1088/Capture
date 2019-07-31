@@ -18,5 +18,5 @@ export const alertColor = '#fa3e3e';
 export const maxWidth = 850;
 export const maxWidthPx = `${maxWidth}px`;
 
-export const headerHeight = '43px';
+export const headerHeight = '59px';
 export const feedImageWidth = '514px';

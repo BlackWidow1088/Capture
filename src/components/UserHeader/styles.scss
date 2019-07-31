@@ -1,0 +1,20 @@
+.fp-c-user-header {
+    display: inline-block;
+} 
+.fp-c-user-header__avatar {
+    position: absolute;
+    margin: 5px 12px 12px 5px;
+}
+.fp-c-user-header__bar {
+    margin: 0px 0px 0px 48px;
+    padding: 9px 12px 12px 5px;
+}
+.fp-c-user-header__title {
+    font-size: 0.8rem;
+}
+.fp-c-user-header--subheader {
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
+

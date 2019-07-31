@@ -1,43 +1,61 @@
-@import "~video-react/styles/scss/video-react";
 @import './variables';
 
+// TODO: developing guideline documentation for maintaining the scss project.
+// TODO: need to add base css (most preferred Normalize)
+// TODO: need to add post processor (most preferred PostCSS) 
 
-.fp-display-inline {
-    display: inline;
+
+// the css guidelines are according to BEM methodology
+
+.fp-l-display {
+    &--inline {
+        display: inline;
+    }
+    &--flex {
+        display: flex;
+    }
+    &--none {
+        display: none;
+    }
+    &--grid {
+        display: grid;
+    }
 }
-.fp-display-flex {
-    display:flex;
+.fp-l-position {
+    &--absolute {
+        position: absolute;
+    }
+    &--relative {
+        position: relative;
+    }
 }
-.fp-display-none {
-    display:none;
-}
-.fp-position-absolute {
-    position: absolute;
-}
-.fp-position-relative {
-    position: relative;
+.fp-l-float {
+    &--right {
+        float:right;
+    }
+    &--left {
+        float:left;
+    }
 }
 
-.fp-float-r {
-    float:right;
+.fp-l-margin {
+    &--left-13 {
+        margin-left: 0.8125rem;
+    }
+    &--left-5 {
+        margin-left: 0.312rem
+    }
 }
 
-.fp-margin-l-12 {
-    margin-left: 12px;
-}
-.fp-margin-l-5 {
-    margin-left: 5px;
-}
-
-.fp-visibility-hide {
+.fp-is-hidden {
     visibility: hidden;
     opacity:0;
 }
-.fp-opacity-0 {
+.fp-is-transparent {
     opacity:0;
 }
 
-.fp-circle {
+.fp-c-circle {
     cursor: pointer;
     height: 8px;
     width: 8px;
@@ -53,18 +71,12 @@
     }
 }
 
-.fp-image {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+.fp-c-card {
+    background-color: white;
+    font-family: Roboto;
+    box-shadow: 4px 8px 16px 8px rgba(0,0,0,0.2);
+    &:hover {
+        box-shadow: 8px 16px 24px 16px rgba(0, 0, 0, 0.2);
+    }
 }
 
-.fp-image-hide {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.fp-img-border {
-    border-style: solid;
-    border-width: 5px;
-    border-color: $fp-primary-blue;
-}

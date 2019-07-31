@@ -107,11 +107,9 @@ function* fetchDataForProfilePage({ userName }) {
 // WATCHERS /////////
 // /////////////////
 function* watchViewProfilePage() {
-  yield* takeEvery(VIEW_PROFILE_PAGE, fetchDataForProfilePage);
+  yield takeEvery(VIEW_PROFILE_PAGE, fetchDataForProfilePage);
 }
 
-export default function* () {
-  yield [
-    fork(watchViewProfilePage),
-  ];
+export default function () {
+  return [fork(watchViewProfilePage)];
 }

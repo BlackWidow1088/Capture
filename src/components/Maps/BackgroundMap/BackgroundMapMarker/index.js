@@ -6,15 +6,18 @@ import {
 import './styles.scss';
 
 class BackgroundMapMarker extends Marker {
+    state = {
+        zIndex: 1,
+    }
     getPixelPositionOffset = (width, height) => ({
         x: -(width / 2),
         y: -(height / 2),
       })
     render() {
-        const hidden = this.props.hiddenMarkers.includes(this.props.options.id)
         return (
-           !hidden &&
+           !this.props.hidden &&
             <OverlayView
+            style={{zIndex: this.state.zIndex}}
             key={Math.random()}
             position={this.props.position}
             /*
@@ -44,8 +47,15 @@ class BackgroundMapMarker extends Marker {
             {/* <div className='fp-bg-map-marker-container'>
                 <div className='fp-bg-map-marker-anchor'>
                     <div className='fp-bg-map-marker fp-popup-bubble'> */}
+                
                         <img src={this.props.img} 
-                        className={this.props.highlight ? ' fp-bg-map-marker-img fp-bg-map-marker-img-highlight' : 'fp-bg-map-marker-img'} />
+                        onMouseOver = {(event) => {
+                            console.log(event)
+                            this.setState({zIndex: 1000 })
+                        }}
+                        onMouseOut = {(event) => {
+                            this.setState({zIndex: 1})}}
+                        className={this.props.highlight ? 'fp-c-card fp-c-background-map__marker-img fp-is-active' : 'fp-c-card fp-c-background-map__marker-img'} />
                     {/* </div>
                 </div>
             </div> */}

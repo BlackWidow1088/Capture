@@ -1,4 +1,4 @@
-.fp-comment-header {
+.fp-c-comment__header {
     margin: 0px 12px 0px 12px;
     padding: 10px 0px 10px 0px;
     border-style: solid;
@@ -7,27 +7,27 @@
         display:inline;
     }
 }
-.fp-comment-like {
+.fp-c-comment__like {
     border-radius: 50%;
     padding: 4px;
     background-color: #3b5998;
 }
 
-.fp-comment-laugh {
+.fp-c-comment__laugh {
     border-radius: 50%;
     padding: 4px;
     margin-left: -2px;
     background-color: white;
 }
 
-.fp-comment-heart {
+.fp-c-comment__heart {
     border-radius: 50%;
     padding: 4px;
     margin-left: -2px;
     background-color: red;
 }
 
-.fp-comment-footer {
+.fp-c-comment__footer {
     padding: 12px;
     font-size: 1.0rem;
     display:flex;
@@ -37,7 +37,7 @@
      }
 }
 
-.fp-comment-action {
+.fp-c-comment__action {
     margin-right: 2px;
     color:grey;
 }

@@ -13,5 +13,5 @@ export default combineReducers({
   posts,
   profiles,
   feed,
-  ui,
+  ui
 });

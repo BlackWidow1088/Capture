@@ -1,0 +1,41 @@
+@import '../../variables';
+.fp-c-search-sidebar--secondary {
+    height: 100%; /* 100% Full-height */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: $fp-primary-color; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    width: 50px;
+    &:hover {
+        width: 500px;
+    }
+}
+
+.fp-c-search-sidebar--primary {
+    height: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    left: 0;
+    background-color: white;
+    width:$fp-c-search-journey-width;
+    overflow-y:auto;
+}
+
+.fp-c-search__image {
+    position: relative;
+    font-family: Roboto;
+    margin: 10px 5px;
+    transition: 0.3s;
+    // border-radius: 5%;
+    width: $fp-c-feed-width/2;
+    object-fit: cover; /* Do not scale the image */
+    object-position: center; 
+}
+
+.fp-c-search__image-container {
+    grid-template-columns: auto auto;
+}

@@ -17,9 +17,19 @@ export const TOGGLE_FLYOUT = 'TOGGLE_FLYOUT';
 export const VIEW_PROFILE_PAGE = 'VIEW_PROFILE_PAGE';
 
 // FEED Actions
-export const GET_FEED = 'GET_FEED';
+export const FETCH_USER_FEED = 'FETCH_USER_FEED';
+export const FETCH_USER_FEED_SUCCESS = 'FETCH_USER_FEED_SUCCESS';
+export const FETCH_USER_FEED_FAILURE = 'FETCH_USER_FEED_FAILURE';
 export const UPDATE_ACTIVE_FEED = 'UPDATE_ACTIVE_FEED';
-export const GET_RELATED_FEED = 'GET_RELATED_FEED';
+export const FETCH_RELATED_USER_FEED_LIST = 'FETCH_RELATED_USER_FEED_LIST';
+export const FETCH_RELATED_USER_FEED_LIST_SUCCESS = 'FETCH_RELATED_USER_FEED_LIST_SUCCESS';
+export const FETCH_RELATED_USER_FEED_LIST_FAILURE = 'FETCH_RELATED_USER_FEED_LIST_FAILURE';
+export const FETCH_RELATED_USER_FEED = 'FETCH_RELATED_USER_FEED';
+export const FETCH_RELATED_USER_FEED_SUCCESS = 'FETCH_RELATED_USER_FEED_SUCCESS';
+export const FETCH_RELATED_USER_FEED_FAILURE = 'FETCH_RELATED_USER_FEED_FAILURE';
+export const FETCH_USER_JOURNEY = 'FETCH_USER_JOURNEY';
+export const FETCH_USER_JOURNEY_SUCCESS = 'FETCH_USER_JOURNEY_SUCCESS';
+export const FETCH_USER_JOURNEY_FAILURE = 'FETCH_USER_JOURNEY_FAILURE';
 
 // MAP Actions
 export const UPDATE_MAP = 'UPDATE_MAP';
@@ -107,21 +117,63 @@ export const viewProfilePage = ({ userName }) => ({
 
 
 // FEED
-export const getFeed = () => ({
-  type: GET_FEED
+export const fetchUserFeed = userId => ({
+  type: FETCH_USER_FEED,
+  userId
+});
+export const fetchUserFeedSuccess = parameters => ({
+  type: FETCH_USER_FEED_SUCCESS,
+  ...parameters
+})
+export const fetchUserFeedFailure = parameters => ({
+  type: FETCH_USER_FEED_FAILURE,
+  ...parameters
 })
 export const updateActiveFeed = payload => ({
     type: UPDATE_ACTIVE_FEED,
     payload
 });
-export const getRelatedFeed = feedId => ({
-  type: GET_RELATED_FEED,
-  feedId
+export const fetchRelatedUserFeedList = ({ userId, feedId }) => ({
+  type: FETCH_RELATED_USER_FEED_LIST,
+  ...{ userId, feedId }
 })
+export const fetchRelatedUserFeedListSuccess = payload => ({
+  type: FETCH_RELATED_USER_FEED_LIST_SUCCESS,
+  ...payload
+});
+export const fetchRelatedUserFeedListFailure = payload => ({
+  type: FETCH_RELATED_USER_FEED_LIST_FAILURE,
+  ...payload
+});
+export const fetchRelatedUserFeed = ({ userId, feedId, originalFeedId }) => ({
+  type: FETCH_RELATED_USER_FEED,
+  ...{ userId, feedId, originalFeedId }
+})
+export const fetchRelatedUserFeedSuccess = payload => ({
+  type: FETCH_RELATED_USER_FEED_SUCCESS,
+  ...payload
+});
+export const fetchRelatedUserFeedFailure = payload => ({
+  type: FETCH_RELATED_USER_FEED_FAILURE,
+  ...payload
+});
 
+export const fetchUserJourney = parameters => ({
+  type: FETCH_USER_JOURNEY,
+  ...parameters
+});
+export const fetchUserJourneySuccess = parameters => ({
+  type: FETCH_USER_JOURNEY_SUCCESS,
+  ...parameters
+})
+export const fetchUserJourneyFailure = parameters => ({
+  type: FETCH_USER_JOURNEY_FAILURE,
+  ...parameters
+})
 
 // MAP
 export const updateMap = payload => ({
   type: UPDATE_MAP,
   payload
 })
+

@@ -1,32 +1,49 @@
 @import '../../../variables';
-.fp-background-map-layout {
+.fp-c-background-map-container {
+    position: relative;
+    transition: visibility 0.6s ease-in-out, opacity 0.6s ease-in-out;
+    &.fp-is-hidden {
+        transition: visibility 0.6s ease-in-out, opacity 0.6s ease-in-out;
+    }
+}
+.fp-l-background-map--secondary {
     position: fixed;
-    top: $fp-header-height;
+    top: $fp-c-header-height;
     left: 1022px;
     bottom: 0px;
     right: 0px;
 }
 
-.fp-background-map-complete-layout {
+.fp-l-background-map--primary {
     position: fixed;
-    top: $fp-header-height;
-    left: 0px;
+    top: $fp-c-header-height;
+    left: $fp-c-search-journey-width;
     bottom: 0px;
     right: 0px;
 }
 
-// .fp-background-map-layout {
-// // round map-layout
-// position: fixed;
-// top: 160px;
-// left: 45px;
-// /* bottom: 0px; */
-// /* right: 0px; */
+// round map-layout
+.fp-l-background-map--round {
+position: fixed;
+top:  178px;
+left: 1100px;
+border-radius: 5%;
 // border-radius: 50%;
-// overflow: hidden;
-// }
+overflow: hidden;
+transition: top 0.3s ease-in 0.3s, right 0.3s ease-in 0.3s, bottom 0.3s ease-in 0.3s, left 0.3s ease-in 0.3s;
 
-.fp-bg-map-marker-cluster {
+&.fp-l-background-map--full-layout {
+    top: 60px;
+    left: $fp-c-search-journey-width;
+    bottom: 0px;
+    right: 0px;
+    border:none;
+    border-radius: 0%;
+    transition: top 0.3s ease 0.3s, right 0.3s ease 0.3s, bottom 0.3s ease 0.3s, left 0.3s ease 0.3s;
+}
+}
+
+.fp-c-background-map__marker-cluster {
     overflow: hidden;
     img {
         width: 100%;

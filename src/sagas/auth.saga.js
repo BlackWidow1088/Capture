@@ -23,11 +23,9 @@ function* authenticateUser({ authToken }) {
 // WATCHERS /////////
 // /////////////////
 function* watchLogin() {
-  yield* takeEvery(LOG_IN_REQUEST, authenticateUser);
+  yield takeEvery(LOG_IN_REQUEST, authenticateUser);
 }
 
-export default function* () {
-  yield [
-    fork(watchLogin),
-  ];
+export default function () {
+  return [fork(watchLogin)]
 }

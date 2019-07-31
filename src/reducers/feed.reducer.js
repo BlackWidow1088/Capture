@@ -1,29 +1,62 @@
 
 import { combineReducers } from 'redux';
 import {
-    UPDATE_ACTIVE_FEED, GET_FEED, GET_RELATED_FEED
+    FETCH_USER_FEED_SUCCESS, UPDATE_ACTIVE_FEED,
+    FETCH_RELATED_USER_FEED_LIST_SUCCESS,
+    FETCH_RELATED_USER_FEED_LIST_FAILURE,
+    FETCH_RELATED_USER_FEED_SUCCESS,
+    FETCH_RELATED_USER_FEED_FAILURE,
+    FETCH_USER_JOURNEY_SUCCESS
 } from '../actions';
-import { getFotoDetails } from '../utils/scrap.utils';
-import feedStub from '../stubs/feed';
-import relatedFeedStub from '../stubs/related_feed';
 
-const loadFeed = () => {
-    feedStub.forEach(item => item.fotos = item.fotos.map(foto => getFotoDetails(foto)));
-    return feedStub;
-}
 const initialState = {
-    all: loadFeed(),
+    all: null,
+    journey: null,
+    recommended: null,
+
     activeFeed: null,
-    relatedFeed: [],
+    relatedFeedList: null,
+    relatedFeed: null,
     loading: false
 };
+// ////////////////////
+// Modifiers //////////
+// //////////////////
+const saveUserFeedToIndexDB = (feed, userId, latestFeed) => {
+    // TODO: arrange in descending order of time the incoming feed and save only maximum latest 30 posts in local IndexDb
+    // and local state.
+    return latestFeed; 
+}
+const saveRelatedUserFeedListToIndexDb = (relatedFeedList, userId, feedId, latestRelatedFeedList) => {
+    // TODO: replace saved related feed list with the latest one
+    return latestRelatedFeedList;
+}
+const saveRelatedUserFeedToIndexDb = (relatedFeed, userId, feedId, latestRelatedFeed) => {
+    // TODO: replace saved related feed with the latest one
+    return latestRelatedFeed;
+}
+
+const saveUserJourneyToIndexDB = (journey, userId, latestJournies) => {
+    // TODO: arrange in descending order of time the incoming feed and save only maximum latest 30 posts in local IndexDb
+    // and local state.
+    return latestJournies; 
+}
+
 // ////////////////////
 // Reducers //////////
 // //////////////////
 function all(state = initialState.all, action) {
     switch (action.type) {
-        case GET_FEED:
+        case FETCH_USER_FEED_SUCCESS:
+            return saveUserFeedToIndexDB(state, action.userId, action.feed);
+        default:
             return state
+    }
+}
+function journey(state = initialState.journey, action) {
+    switch (action.type) {
+        case FETCH_USER_JOURNEY_SUCCESS:
+            return saveUserJourneyToIndexDB(state, action.userId, action.journies);
         default:
             return state
     }
@@ -37,11 +70,22 @@ function activeFeed(state = initialState.activeFeed, action) {
             return state;
     }
 }
-
+function relatedFeedList(state = initialState.relatedFeedList, action) {
+    switch(action.type) {
+        case FETCH_RELATED_USER_FEED_LIST_SUCCESS:
+            return saveRelatedUserFeedListToIndexDb(state, action.userId, action.feedId, action.relatedFeedList);
+        case FETCH_RELATED_USER_FEED_LIST_FAILURE:
+            return saveRelatedUserFeedListToIndexDb(state, action.userId, action.feedId, null);
+        default:
+            return state;
+    }
+}
 function relatedFeed(state = initialState.relatedFeed, action) {
     switch(action.type) {
-        case GET_RELATED_FEED:
-            return relatedFeedStub;
+        case FETCH_RELATED_USER_FEED_SUCCESS:
+            return saveRelatedUserFeedToIndexDb(state, action.userId, action.feedId, action.relatedFeed);
+        case FETCH_RELATED_USER_FEED_FAILURE:
+            return saveRelatedUserFeedToIndexDb(state, action.userId, action.feedId, null);
         default:
             return state;
     }
@@ -49,7 +93,9 @@ function relatedFeed(state = initialState.relatedFeed, action) {
 
 export default combineReducers({
     all,
+    journey,
     activeFeed,
+    relatedFeedList,
     relatedFeed
 });
 

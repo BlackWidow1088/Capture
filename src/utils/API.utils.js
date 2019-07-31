@@ -15,6 +15,15 @@ import profiles from '../stubs/profiles';
 import friends from '../stubs/friends';
 import posts from '../stubs/posts';
 
+// feed
+import feed from '../stubs/feed';
+import relatedFeedList from '../stubs/related_feed';
+import placesFeed from '../stubs/places_feed';
+
+// map
+import { GOOGLE_MAP_NOT_FOUND, DEFAULT_MARKER_PATH, APP_RESERVED_FEED_ID, APP_RESERVED_USER_ID, APP_RESERVED_USER_NAME,
+  FOTO_CATEGORY } from '../constants';
+
 export const authenticateUser = ({ authToken }) => {
   // For now, we're hardcore faking this.
   // No matter which auth token they provide, they're going to be
@@ -27,7 +36,6 @@ export const authenticateUser = ({ authToken }) => {
 
   const userId = Object.keys(profiles)[1];
   const user = profiles[userId];
-
   return user;
 }
 
@@ -100,4 +108,66 @@ export const fetchUserFriendsData = ({
     friendIds,
     friendProfiles,
   }
+}
+
+// FEED
+export const fetchUserFeed = ({ userId }) => {
+  // TODO: fetch latest feed for the userId
+  return feed;
+}
+
+export const fetchRelatedUserFeedList = ({ userId, feedId }) => {
+  // TODO: fetch related feed list for the corresponding feedId and userId
+  let data = relatedFeedList.filter(feed => feed.feedId === feedId)[0]
+  return data;
+}
+
+export const fetchRelatedUserFeed = async ({ userId, feedId }) => {
+   // TODO: fetch complete feed which is related to corresponding feedId and userId
+  return feed.filter(item => item.id === feedId)[0]
+}
+
+
+export const fetchJourney = async places => {
+    // TODO: need to sort according to region top feed and arrange. for now, the top likes are arranged in the favorable order.
+  // TODO: fetch according to place mentioned
+  return placesFeed;
+}
+export const fetchFeedForPlaces = async places => {
+  // TODO: need to sort according to region top feed and arrange. for now, the top likes are arranged in the favorable order.
+  // TODO: fetch according to place mentioned
+  let combined = [], combinedFood = [];
+  placesFeed.feed.forEach(item => {
+      combined = combined.concat(item.fotos.map(foto => ({ ...item.user, ...foto})))
+  });
+  combined.sort((a, b) => (b.likes - a.likes));
+  combinedFood = combined.filter(item => item.category === FOTO_CATEGORY.FOOD).sort((a, b) => (b.likes - a.likes))
+  return {
+    default: placesFeed.feed,
+    top: { 
+      id: APP_RESERVED_FEED_ID,
+      user: {
+          uid: APP_RESERVED_USER_ID,
+          username: APP_RESERVED_USER_NAME,
+          userpic: DEFAULT_MARKER_PATH
+      },
+      combined, combinedFood
+    }
+  }
+}
+
+// MAP
+export const fetchGoogleMapRoute = async ({ from, to }) => {
+  if (!window.google) {
+    return { result: null, status: GOOGLE_MAP_NOT_FOUND }
+  }
+  // TODO: to create Service to avoid recreation of objects.
+  const directionService = new window.google.maps.DirectionsService();
+  return new Promise((resolve, reject) => {
+    directionService.route({
+      origin: from,
+      destination: to,
+      travelMode: 'DRIVING'
+  }, resolve, reject);
+  });
 }

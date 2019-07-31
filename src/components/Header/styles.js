@@ -18,17 +18,19 @@ export default StyleSheet.create({
     width: '100%',
     top: '0',
     height: headerHeight,
-    backgroundColor: primaryColor,
+    backgroundColor: 'white',
     borderBottom: `1px solid ${darkerPrimaryColor}`,
     color: '#FFFFFF',
   },
   headerContents: {
     display: 'flex',
     justifyContent: 'space-between',
+    height: headerHeight
   },
-  headerSearch: {
-    flex: '1 1 auto',
-  },
+  // headerSearch: {
+  //   margin: 'auto'
+  //   // flex: '1 1 auto',
+  // },
   headerNavigation: {
     flex: '0 0 auto',
     height: headerHeight,
@@ -39,20 +41,16 @@ export default StyleSheet.create({
     height: headerHeight,
     padding: '0 9px',
   },
-  logo: {
-    margin: '7px 5px 7px -2px',
-    float: 'left',
-  },
-  searchInput: {
-    position: 'relative',
-    top: '9px',
-    width: '390px',
-    height: '24px',
-    padding: '0 5px',
-    fontSize: '14px',
-    float: 'left',
-    border: 'none',
-    borderRadius: '3px',
-    outline: 'none',
-  },
+  // logo: {
+  //   margin: '9px 5px 7px 5px',
+  //   // float: 'left',
+  // },
+  // searchInput: {
+  //   borderStyle: 'solid',
+  //   borderWidth: '1px',
+  //   borderColor: `${darkerPrimaryColor}`,
+  //   borderRadius: '3px',
+  //   outline: 'none',
+  //   color: '#333',
+  // },
 });

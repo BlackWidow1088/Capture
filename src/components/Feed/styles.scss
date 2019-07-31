@@ -1,19 +1,13 @@
 @import '../../variables';
-.fp-feed {
+.fp-c-feed {
     position: relative;
-    background-color: white;
-    font-family: Roboto;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    margin: 8px auto;
-    width: $fp-feed-width;
+    margin: 60px auto;
+    width: $fp-c-feed-width;
     transition: 0.3s;
-    border-radius: 5%;
-}
-.fp-feed:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    // border-radius: 5%;
 }
 
-.fp-feed-back-arrow {
+.fp-c-feed__back-arrow {
     float:right;
     left: -40px;
     top: 10px;

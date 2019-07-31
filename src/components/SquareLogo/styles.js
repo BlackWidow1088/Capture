@@ -1,13 +1,14 @@
 import { StyleSheet } from 'aphrodite';
+import {
+  primaryColor,
+  darkerPrimaryColor,
+} from '../../style-variables.js';
 
 export default StyleSheet.create({
   squareLogoContainer: {
-    position: 'relative',
-    display: 'inline-block',
     outline: 'none',
     padding: '2px',
-  },
-  squareLogo: {
-    display: 'block',
+    background: 'white',
+    cursor: 'pointer'
   }
 });

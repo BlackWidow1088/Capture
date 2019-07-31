@@ -5,12 +5,14 @@ import {
   
   const initialState = {
     isFullLayout: false,
+    isHidden: false,
+    route: null
   };
   
   // ////////////////////
   // Reducers //////////
   // //////////////////
-  export default function headerActions(state = initialState, action) {
+  export default function mapActions(state = initialState, action) {
     switch (action.type) {
       case UPDATE_MAP:
         // If we clicked the same button that opened the flyout, it should close.
@@ -18,7 +20,7 @@ import {
             ...state,
             ...action.payload
         }
-  
+      
       default:
         return state;
     }

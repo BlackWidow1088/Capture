@@ -1,66 +1,37 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './styles.scss';
-import Header from './Header';
+import UserHeader from '../UserHeader';
 import Description from './Description';
 import TileLayout from './TileLayout';
-import RelatedFeed from './RelatedFeed';
-import BackArrow from '../BackArrow';
 import MoreOptionIcon from '../MoreOptionIcon';
 import Comment from './Comment';
 
-import { getRelatedFeed } from '../../actions';
+// TODO: move moreoptionicon and related feed in Home
 
-class Feed extends React.Component {
-    state = {
-        currentFeedId: -1,
-        showingRelatedFeed: false
-    }
-    componentWillMount() {
-        this.setState({ currentFeedId: this.props.feedId });
-    }
+export default class Feed extends React.Component {
     render = () => {
-        const feed = this.props.feed.filter(item => item.id === this.state.currentFeedId)[0];
+        const feed = this.props.feed;
         if (!feed) {
-            return null;
+            return null
         }
         return (
-            <div className="fp-feed">
-                {/* <div className={this.props.feedId !== this.state.currentFeedId ? 'fp-feed-back-arrow fp-position-relative': 'fp-display-none'}>
-                <BackArrow back={() => this.setState({currentFeedId: this.props.feedId})}/>
-                </div> */}
-                <Header user={feed.user} date={feed.date} />
-                <Description description={feed.description} />
+            <div className="fp-c-card fp-c-feed">
                 {
-                    !this.state.showingRelatedFeed &&
-                    <div className='fp-position-relative' style={{ top: '-7px', left: '11px' }}>
-                        <MoreOptionIcon onClick={() => {
-                            this.props.getRelatedFeed(this.props.feedId)
-                            this.setState({ showingRelatedFeed: true })
-                        }}
-                            icon={['fas', 'angle-left']}
+                    this.props.isRelatedFeed &&
+                    <div className='fp-l-position--relative' style={{ top: '-3px', float: 'right', right: '12px' }}>
+                        <MoreOptionIcon onClick={this.props.closeRelatedFeed}
+                            icon={['fas', 'times-circle']}
                         />
                     </div>
                 }
-                <TileLayout
-                    fotos={feed.fotos}
-                    videos={feed.videos}
-                    feedId={feed.id}
-                    user={feed.user} />
-                <RelatedFeed feedId={this.props.feedId} showFeed={(feedId) => this.setState({ currentFeedId: feedId })}
-                    isVisible={this.state.showingRelatedFeed}
-                    close={() => this.setState({ currentFeedId: this.props.feedId, showingRelatedFeed: false })}
-                />
+                <TileLayout feed={{ ...feed }} />
+                <UserHeader user={feed.user} date={feed.date} />
+                <Description description={feed.description} />
                 <Comment />
             </div>
         )
     }
 }
 Feed.propTypes = {
-    feedId: PropTypes.string.isRequired,
 };
-const mapStateToProps = (state, ownProps) => ({
-    feed: state.feed.all
-})
-export default connect(mapStateToProps, { getRelatedFeed })(Feed);
