@@ -1,12 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 
 import { currentUserSelector } from '../../reducers/auth.reducer';
-import { updateMap } from '../../actions';
+import { updateMap, changeMood } from '../../actions';
 
 import HeaderAction from '../HeaderAction';
 import Flyout from '../Flyout';
@@ -16,6 +16,9 @@ import MaxWidthWrapper from '../MaxWidthWrapper';
 
 import styles from './styles';
 import CustomSearchBox from '../Maps/CustomSearchBox';
+import { LIVE, MOOD, WEATHER } from '../../constants';
+import './styles.scss';
+import StatusContainer from '../StatusContainer';
 
 class Header extends React.Component {
   render() {
@@ -51,7 +54,11 @@ class Header extends React.Component {
       <div className={css(styles.headerContainer)}>
         <div className={css(styles.header)}>
           <MaxWidthWrapper mergeStyles={styles.headerContents}>
+            <div onClick={() => this.props.history.push('/live')} className='fp-c-header__live'>
+              <img src={LIVE}/>
+            </div>
             <CustomSearchBox />
+            <StatusContainer onChange={this.props.changeMood} mood={this.props.mood} weather={WEATHER.RAIN}/>
             {/* <div className={css(styles.headerSearch)}>
               <SquareLogo mergeStyles={styles.logo} searchJourney={() => this.setState({searchJourney: true})} />
               <div className='fp-c-header__search-box'>
@@ -88,7 +95,8 @@ Header.propTypes = {
 
 const mapStateToProps = state => ({
   activeFlyout: state.ui.headerActions.activeFlyout,
+  mood: state.ui.headerActions.mood,
   currentUser: currentUserSelector(state)
 });
 
-export default connect(mapStateToProps, { updateMap })(Header);
+export default connect(mapStateToProps, { updateMap, changeMood })(withRouter(Header));

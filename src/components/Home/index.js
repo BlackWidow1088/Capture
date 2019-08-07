@@ -36,7 +36,7 @@ class Home extends React.Component {
     }
     this.props.history.listen((location, action) => {
       this.props.updateActiveFeed(null);
-      this.props.updateMap({ isHidden: true });
+      // this.props.updateMap({ isHidden: true });
       this.props.fetchRelatedUserFeed({ userId: null, feedId: null, originalFeedId: null });
       this.props.fetchRelatedUserFeedList({ userId: null, feedId: null });
       if (this.props.history.location.pathname.includes(journeyPathName)) {

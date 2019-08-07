@@ -19,4 +19,4 @@ export const maxWidth = 850;
 export const maxWidthPx = `${maxWidth}px`;
 
 export const headerHeight = '59px';
-export const feedImageWidth = '514px';
+export const feedImageWidth = '614px';

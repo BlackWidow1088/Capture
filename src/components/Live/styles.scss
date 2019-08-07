@@ -1,0 +1,13 @@
+.fp-c-live--list {
+    position: fixed;
+    width:320px;
+    font-style:italic; font-family:Georgia, Times, serif; font-size: 20px;
+    div p { padding:8px; font-style:normal; font-family:Arial; font-size:18px; border-left: 1px solid #999; };
+    div p em { display:block; }
+}
+.fp-c-live {
+    position: relative;
+    margin-left: 400px;
+    width: 475px;
+    height: 400px;
+}

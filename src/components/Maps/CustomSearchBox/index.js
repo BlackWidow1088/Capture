@@ -41,8 +41,7 @@ class CustomSearchBox extends React.Component {
                     result = null;
                 }
                 this.props.updateMap({route: { polyline, markers }})
-                // this.props.history.push(`/search/journey?from=${this.fromPlace.formatted_address}&to=${this.toPlace.formatted_address}`)
-                this.props.history.push(`/home/journey/${TOP_JOURNEY}?from=${this.fromPlace.formatted_address}&to=${this.toPlace.formatted_address}`)
+                this.props.history.push(`/journey/${TOP_JOURNEY}?from=${this.fromPlace.formatted_address}&to=${this.toPlace.formatted_address}`)
             } catch(error) {
                 console.log(error)
             }
@@ -53,7 +52,7 @@ class CustomSearchBox extends React.Component {
         markers.push(new window.google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()));
         this.props.updateMap({route: { markers }});
         // this.props.history.push(`/search/journey?place=${place.formatted_address}`)
-        this.props.history.push(`/home/journey/${TOP_JOURNEY}?place=${place.formatted_address}`)
+        this.props.history.push(`/journey/${TOP_JOURNEY}?place=${place.formatted_address}`)
     }
 
     setMarkers = (places) => {

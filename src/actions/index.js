@@ -34,6 +34,9 @@ export const FETCH_USER_JOURNEY_FAILURE = 'FETCH_USER_JOURNEY_FAILURE';
 // MAP Actions
 export const UPDATE_MAP = 'UPDATE_MAP';
 
+// MOOD
+export const CHANGE_MOOD = 'CHANGE_MOOD';
+
 export const fetchUserFriendsRequest = () => ({
   type: FETCH_USER_FRIENDS_REQUEST,
 });
@@ -177,3 +180,8 @@ export const updateMap = payload => ({
   payload
 })
 
+// MOOD
+export const changeMood = mood =>({
+  type: CHANGE_MOOD,
+  mood
+})

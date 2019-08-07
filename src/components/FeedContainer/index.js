@@ -22,15 +22,16 @@ class FeedContainer extends React.Component {
 
     componentWillMount() {
         // TODO: get logged in UserId
-        window.addEventListener('scroll', throttle(this.scroll, 200, { leading: false, trailing: true }));
+        this.throttle = throttle(this.scroll, 200, { leading: false, trailing: true });
+        window.addEventListener('scroll', this.throttle);
         this.props.updateActiveFeed(null);
-        this.props.updateMap({ isHidden: false });
+        // this.props.updateMap({ isHidden: false });
     }
     componentWillUnmount() {
         this.clearTimeout();
-        window.removeEventListener('scroll', throttle(this.scroll, 200, { leading: false, trailing: true }));
+        window.removeEventListener('scroll', this.throttle);
         this.props.updateActiveFeed(null);
-        this.props.updateMap({ isHidden: false });
+        // this.props.updateMap({ isHidden: false });
     }
     clearTimeout() {
         if (this.relatedFeedListTimeout) {
@@ -41,12 +42,12 @@ class FeedContainer extends React.Component {
     scrollUpdates = (feed) => {
         // TODO: depending on the time wait on feed, fetch the related feeds
         this.props.fetchRelatedUserFeedList({ userId: 'abc123', feedId: feed.id });
-        this.props.updateMap({ isHidden: false });
+        // this.props.updateMap({ isHidden: false });
     }
     scroll = event => {
         this.clearTimeout();
         this.props.fetchRelatedUserFeedList({ userId: null, feedId: null });
-        this.props.updateMap({ isHidden: true });
+        // this.props.updateMap({ isHidden: true });
         let feed = this.props.feed;
         if (!feed) {
             this.props.updateActiveFeed(null);
@@ -71,7 +72,7 @@ class FeedContainer extends React.Component {
         }
         return (
             <div ref={this.containerRef}>
-                <Link to='/home/journey/top?from=Pune'>Go</Link>
+                <Link to='/journey/top?from=Pune'>Go</Link>
                 <Link to='/'>There</Link>
                 {
                     feed && feed.map((data, index) => {

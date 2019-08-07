@@ -29,7 +29,7 @@ export const showJourney = (journies, selectedIndex, showCategory) => {
             result = feed.default[selectedIndex]
             break;
     }
-    return createSeperateFeed(result);
+    return result;
 }
 
 const createSeperateFeed = (result) => {

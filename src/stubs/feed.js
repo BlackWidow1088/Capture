@@ -22,6 +22,7 @@ export default [
             // {uid:4, fotoId: 1, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/1.jpg`, lat: 44.578230, lng: -110.476446, title: '', date: '', description: ''},
             // {uid:4, fotoId: 2, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/2.jpg`, lat: 44.589611, lng: -110.338436, title: '', date: '', description: ''},
             // {uid:4, fotoId: 3, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/3.jpg`, lat: 44.568286, lng: -110.315493, title: '', date: '', description: ''},
+            {uid:4, fotoId: 102, isVideo: true, locationId: { local: 0, global: 0}, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/videos/video2.mp4`, lat: 44.553497, lng: -110.285649, title: '', date: '', description: ''},
             {uid:4, fotoId: 4, locationId: { local: 0, global: 0}, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/4.jpg`, lat: 44.553497, lng: -110.285649, title: '', date: '', description: ''},
             // {uid:4, fotoId: 5, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/5.jpg`, lat: 44.530535, lng: -110.269639, title: '', date: '', description: ''},
             // {uid:4, fotoId: 6, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/6.jpg`, lat: 44.491217, lng: -110.267483, title: '', date: '', description: ''},
@@ -41,6 +42,7 @@ export default [
         PC @pal_love_ @birla_mayur #yellowstonenationalpark #slc #friends #adventure #nature #beauty @ Yellowstone National Park`,
         date: new Date(),
         fotos: [
+            {uid:4, fotoId: 103, isVideo: true, locationId: { local: 0, global: 0}, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/videos/video3.mp4`, lat: 44.553497, lng: -110.285649, title: '', date: '', description: ''},
             {uid:4, fotoId: 38, locationId: { local: 0, global: 0}, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/1.jpg`, lat: 44.578230, lng: -110.476446, title: '', date: '', description: ''},
             {uid:4, fotoId: 39, locationId: { local: 1, global: 1}, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/2.jpg`, lat: 44.589611, lng: -110.338436, title: '', date: '', description: ''},
             {uid:4, fotoId: 40, locationId: { local: 1, global: 1}, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/SharangKulkarni/Journeys/0/3.jpg`, lat: 44.568286, lng: -110.315493, title: '', date: '', description: ''},
@@ -94,6 +96,7 @@ export default [
         PC @pal_love_ @birla_mayur #yellowstonenationalpark #slc #friends #adventure #nature #beauty @ Yellowstone National Park`,
         date: new Date(),
         fotos: [
+            {uid:1, fotoId: 104, isVideo: true, locationId: { local: 0, global: 97}, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/NatalieOsmann/Journeys/0/videos/video1.mp4`, lat: 29.6949577, lng: 83.3881236, title: '', date: '', description: ''},
             {uid:1, fotoId: 7, locationId: { local: 0, global: 97}, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/NatalieOsmann/Journeys/0/Screenshot (2).png`, lat: 29.6949577, lng: 83.3881236, title: '', date: '', description: ''},
             {uid:1, fotoId: 8, locationId: { local: 1, global: 98}, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/NatalieOsmann/Journeys/0/Screenshot (3).png`, lat: 29.501932, lng: 83.3881236, title: '', date: '', description: ''},
             {uid:1, fotoId: 9, locationId: { local: 2, global: 99}, likes: 100, category: 'place', foto: `${process.env.PUBLIC_URL}/data/fotos/NatalieOsmann/Journeys/0/Screenshot (23).png`, lat: 30.245532, lng: 83.975249, title: '', date: '', description: ''},

@@ -1,10 +1,12 @@
 import {
-  TOGGLE_FLYOUT
+  TOGGLE_FLYOUT, CHANGE_MOOD
 } from '../../actions';
+import { MOOD } from '../../constants';
 
 
 const initialState = {
   activeFlyout: null,
+  mood: MOOD.GENERAL
 };
 
 // ////////////////////
@@ -22,6 +24,12 @@ export default function headerActions(state = initialState, action) {
         ...state,
         activeFlyout: newFlyoutValue,
       };
+
+    case CHANGE_MOOD:
+      return {
+        ...state, 
+        mood: action.mood
+      }
 
     default:
       return state;

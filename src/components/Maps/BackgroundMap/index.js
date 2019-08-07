@@ -208,7 +208,7 @@ class BackgroundMap extends React.Component {
                         data={this.props}
                         googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${env.api}&v=3.exp&libraries=geometry,places`}
                         loadingElement={<div style={{ height: `100%` }} />}
-                        containerElement={<div style={this.props.mapOptions.isFullLayout ? {height: '800px', width: '1800px'} : { height: `500px`, width: '400px' }} />}
+                        containerElement={<div style={this.props.mapOptions.isFullLayout ? {height: '800px', width: '1800px'} : { height: `500px`, width: '370px' }} />}
                         // containerElement={<div style={{ height: `800px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
                     />

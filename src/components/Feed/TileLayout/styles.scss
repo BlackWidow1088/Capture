@@ -1,8 +1,6 @@
 @import '../../../variables';
 .fp-c-tile-layout {
-    // margin:10px;
     position:relative;
-    padding: 5px 5px 10px 5px;
     width: $fp-c-feed-image-width;
     img {
         vertical-align: middle;
@@ -48,7 +46,17 @@
 }
 
 
-.fp-c-tile-layout__next-image {
-    position: absolute;
-    left: 249px;
+.fp-c-slider {
+    &__right {
+        position: absolute;
+        right: 0px;
+        top:200px;
+        background: white;
+    }
+    &__left {
+        position: absolute;
+        left: 0px;
+        top:200px;
+        background: white;
+    }
 }

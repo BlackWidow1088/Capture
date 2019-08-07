@@ -26,9 +26,9 @@ export default class Feed extends React.Component {
                     </div>
                 }
                 <TileLayout feed={{ ...feed }} />
-                <UserHeader user={feed.user} date={feed.date} />
+                {/* <UserHeader user={feed.user} date={feed.date} />
                 <Description description={feed.description} />
-                <Comment />
+                <Comment /> */}
             </div>
         )
     }
