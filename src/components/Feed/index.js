@@ -11,12 +11,8 @@ import Comment from './Comment';
 
 export default class Feed extends React.Component {
     render = () => {
-        const feed = this.props.feed;
-        if (!feed) {
-            return null
-        }
         return (
-            <div className="fp-c-card fp-c-feed">
+            this.props.feed && <div className="fp-c-card fp-c-feed">
                 {
                     this.props.isRelatedFeed &&
                     <div className='fp-l-position--relative' style={{ top: '-3px', float: 'right', right: '12px' }}>
@@ -25,7 +21,7 @@ export default class Feed extends React.Component {
                         />
                     </div>
                 }
-                <TileLayout feed={{ ...feed }} />
+                <TileLayout feed={this.props.feed} updateImageIndex={this.props.updateImageIndex}/>
                 {/* <UserHeader user={feed.user} date={feed.date} />
                 <Description description={feed.description} />
                 <Comment /> */}

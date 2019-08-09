@@ -8,6 +8,10 @@ import configureStore from './store';
 import App from './components/App';
 import Header from './components/Header';
 import Home from './components/Home';
+import InterestedContainer from './components/InterestedContainer';
+import FeedContainer from './components/FeedContainer';
+import Travel from './components/Travel';
+import Food from './components/Food';
 import Journey from './components/Journey';
 import Profile from './components/Profile';
 import Search from './components/Search';
@@ -26,7 +30,6 @@ import {
   faShareSquare as faShareSquareRegular,
   faCommentAlt as faCommentAlt
 } from '@fortawesome/free-regular-svg-icons';
-import InterestedContainer from './components/InterestedContainer';
 
 library.add(
   faHeart, faThumbsUp, faLaughBeam, faEllipsisH, faAngleLeft, faTimesCircle, faVideo, faCamera, faSearch, faGlobeAmericas,
@@ -44,10 +47,11 @@ render(
       <App>
         <BackgroundMap />
         <Header />
-          <Route exact path={['/', '/home']} component={Home} />
+          <Route exact path={['/', '/feed']} component={FeedContainer} />
+          <Route exact path={'/food'} component={Food} />
           <Route exact path="/journey/:place" component={Journey} />
-          <Route exact path="/search/q" component={Search} />
           <Route exact path="/live" component={Live} />
+          <Route exact path="/q/:value" component={Search} />
           <Route exact path="/editor/:editorName" component={Editor} />
           <Route exact path="/profile/:userName" component={Profile} />
         <WindowEvents />

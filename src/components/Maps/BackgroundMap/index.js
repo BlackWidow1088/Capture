@@ -12,7 +12,7 @@ import mapElements from './map';
 import env from '../../../env';
 import './styles.scss';
 import { eqSet } from '../../../utils/scrap.utils';
-import { DEFAULT_MARKER_PATH } from '../../../constants';
+import { DEFAULT_MARKER_PATH, MARKER } from '../../../constants';
 import BackgroundMapMarker from './BackgroundMapMarker';
 
 // TODO: need to develop robust code for google maps
@@ -47,8 +47,7 @@ class GoogleMapWrapper extends React.Component {
                 }
                 current.fotos.map(marker => {
                     const latlng = new window.google.maps.LatLng(marker.lat, marker.lng)
-                    this.position.push({ location: latlng, markerId: marker.fotoId, userPic: marker.userPic, uid: marker.uid, userName: marker.userName, 
-                        foto: this.props.data.mapOptions.isFullLayout ? marker.foto: null });
+                    this.position.push({ location: latlng, markerId: marker.fotoId, img: MARKER});
                     this.updateBounds.extend(latlng);
                 })
             } 
@@ -71,9 +70,10 @@ class GoogleMapWrapper extends React.Component {
         if (!window.google) {
             return null;
         }
-        let userPic = (this.props.data.activeFeed && this.props.data.activeFeed.user.userpic) || (DEFAULT_MARKER_PATH)
+        // let userPic = (this.props.data.activeFeed && this.props.data.activeFeed.user.userpic) || (DEFAULT_MARKER_PATH)
         this.updateBounds = null;
         this.update();
+        console.log('positions ', this.position)
         return (<GoogleMap
             ref={map => {
                 this.map = map;
@@ -163,7 +163,7 @@ class GoogleMapWrapper extends React.Component {
                                     key={marker.markerId}
                                     hidden={false}
                                     // hidden={this.state.hiddenMarkers && this.state.hiddenMarkers.includes(marker.markerId)}
-                                    img={marker.foto || marker.userPic || userPic}
+                                    img={marker.img}
                                     position={marker.location}
                                     highlight={isHightlightedMarker}
                                     opacity={0}

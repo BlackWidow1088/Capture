@@ -34,7 +34,7 @@ class Home extends React.Component {
     if (this.props.history.location.pathname !== '/') {
       this.props.history.push('/');
     }
-    this.props.history.listen((location, action) => {
+    this.unlisten = this.props.history.listen((location, action) => {
       this.props.updateActiveFeed(null);
       // this.props.updateMap({ isHidden: true });
       this.props.fetchRelatedUserFeed({ userId: null, feedId: null, originalFeedId: null });
@@ -48,6 +48,9 @@ class Home extends React.Component {
         this.setState({ showJourney: false, selectedIndex: TOP_JOURNEY });
       }
     })
+  }
+  componentWillUnmount() {
+    this.unlisten();
   }
   render() {
     return (

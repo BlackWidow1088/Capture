@@ -6,7 +6,7 @@ import { MOOD } from '../../constants';
 
 const initialState = {
   activeFlyout: null,
-  mood: MOOD.GENERAL
+  mood: MOOD.FEED
 };
 
 // ////////////////////

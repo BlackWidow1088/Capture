@@ -33,7 +33,7 @@ export default class RelatedFeed extends React.Component {
                                             className={this.state.currentImageIndex === item.fotoId ? 'fp-c-related-feed__image fp-is-active' : 'fp-c-related-feed__image'}
                                             onClick={() => {
                                                 this.setState({ currentImageIndex: item.fotoId })
-                                                this.props.showRelatedFeed(item.relatedFeedId, item.originalFeedId)
+                                                this.props.showRelatedFeed(item.fotoId, item.relatedFeedId, item.originalFeedId)
                                             }} />)
 
                                 }

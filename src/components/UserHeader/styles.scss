@@ -2,8 +2,15 @@
     display: inline-block;
 } 
 .fp-c-user-header__avatar {
-    position: absolute;
-    margin: 5px 12px 12px 5px;
+    img {
+        border-style: solid;
+        width: 50px;
+        border-radius: 50%;
+        padding: 2px;
+        border-width: 1px;
+        object-fit: contain;
+        object-position: center
+    }
 }
 .fp-c-user-header__bar {
     margin: 0px 0px 0px 48px;

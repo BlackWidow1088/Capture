@@ -19,6 +19,7 @@ import posts from '../stubs/posts';
 import feed from '../stubs/feed';
 import relatedFeedList from '../stubs/related_feed';
 import placesFeed from '../stubs/places_feed';
+import travelFeed from '../stubs/travel_mood_feed';
 
 // map
 import { GOOGLE_MAP_NOT_FOUND, DEFAULT_MARKER_PATH, APP_RESERVED_FEED_ID, APP_RESERVED_USER_ID, APP_RESERVED_USER_NAME,
@@ -127,6 +128,10 @@ export const fetchRelatedUserFeed = async ({ userId, feedId }) => {
   return feed.filter(item => item.id === feedId)[0]
 }
 
+export const fetchUserTravel = ({ userId }) => {
+  // TODO: fetch latest feed for the userId
+  return travelFeed;
+}
 
 export const fetchJourney = async places => {
     // TODO: need to sort according to region top feed and arrange. for now, the top likes are arranged in the favorable order.

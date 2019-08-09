@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
-import Avatar from '@material-ui/core/Avatar';
 import { formatPostTimestamp } from '../../utils/time.utils';
 
 class UserHeader extends React.Component {
     render = () => {
         return (
-            <div className="fp-c-user-header">
+            <div className="fp-c-user-header" onClick={()=>this.props.onSelect(this.props.index)}>
                 <div className="fp-c-user-header__avatar">
-                    <Avatar aria-label="Recipe" alt={this.props.user.username} src={`${this.props.user.userpic}`} />
+                    <img alt={this.props.user.username} src={`${this.props.user.userpic}`} />
                 </div>
                 <div className="fp-c-user-header__bar">
                     {  this.props.user && this.props.user.username && <div className="fp-c-user-header__title">{this.props.user.username}</div>}

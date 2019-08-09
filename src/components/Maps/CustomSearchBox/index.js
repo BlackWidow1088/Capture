@@ -8,7 +8,7 @@ import './styles.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as API from '../../../utils/API.utils';
 import { updateMap } from '../../../actions';
-import { TOP_JOURNEY } from '../../../constants';
+import { MOOD, TOP_JOURNEY } from '../../../constants';
 
 class CustomSearchBox extends React.Component {
     state = {
@@ -21,14 +21,15 @@ class CustomSearchBox extends React.Component {
         this.toPlace = this.toSearchBox.getPlaces()[0];
     }
     searchJourney = async () => {
-        if(!this.fromPlace && !this.toPlace) {
+        if (!this.fromPlace && !this.toPlace) {
             return;
         }
         let markers = [];
         let polyline = null;
-        if(this.fromPlace && this.toPlace) {
-            try{
-                const result = await API.fetchGoogleMapRoute({ 
+        this.props.changeMood(MOOD.JOURNEY)
+        if (this.fromPlace && this.toPlace) {
+            try {
+                const result = await API.fetchGoogleMapRoute({
                     from: this.fromPlace.formatted_address,
                     to: this.toPlace.formatted_address
                 });
@@ -40,9 +41,9 @@ class CustomSearchBox extends React.Component {
                 } else {
                     result = null;
                 }
-                this.props.updateMap({route: { polyline, markers }})
+                this.props.updateMap({ route: { polyline, markers } })
                 this.props.history.push(`/journey/${TOP_JOURNEY}?from=${this.fromPlace.formatted_address}&to=${this.toPlace.formatted_address}`)
-            } catch(error) {
+            } catch (error) {
                 console.log(error)
             }
             return;
@@ -50,8 +51,7 @@ class CustomSearchBox extends React.Component {
 
         const place = this.fromPlace || this.toPlace;
         markers.push(new window.google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()));
-        this.props.updateMap({route: { markers }});
-        // this.props.history.push(`/search/journey?place=${place.formatted_address}`)
+        this.props.updateMap({ route: { markers } });
         this.props.history.push(`/journey/${TOP_JOURNEY}?place=${place.formatted_address}`)
     }
 
@@ -85,50 +85,48 @@ class CustomSearchBox extends React.Component {
         return (
             <div className='fp-c-custom-search'>
                 <div className='fp-c-custom-search__globe-logo'>
-                <SquareLogo icon={this.state.searchJourney ? ['fas', 'search']: ['fas', 'globe-americas']} searchJourney={() => this.setState({ searchJourney: !this.state.searchJourney })} />
+                    <SquareLogo icon={this.state.searchJourney ? ['fas', 'search'] : ['fas', 'globe-americas']} searchJourney={() => this.setState({ searchJourney: !this.state.searchJourney })} />
                 </div>
-                {/* <div className='fp-c-custom-search__search-box'> */}
-                    {
-                        this.state.searchJourney ?
-                            // <React.Fragment>
-                            <div className='fp-c-custom-search__search-box'>
-                                <input
-                                    ref={(c) => {
-                                        if (!c || !window.google) {
-                                            return;
-                                        }
-                                        this.fromSearchBox = new window.google.maps.places.SearchBox(c, { types: ['geocode'] });
-                                        this.fromSearchBox.addListener('places_changed', this.from)
-                                    }}
-                                    placeholder="From..."
-                                    type="text"
-                                    className='fp-c-custom-search__search-box--map'
-                                    onChange={() => this.fromPlace = null}
-                                />
-                                <input
-                                    ref={(c) => {
-                                        if (!c || !window.google) {
-                                            return;
-                                        }
-                                        this.toSearchBox = new window.google.maps.places.SearchBox(c, { types: ['geocode'] });
-                                        this.toSearchBox.addListener('places_changed', this.to)
-                                    }}
-                                    placeholder="To..."
-                                    type="text"
-                                    className='fp-c-custom-search__search-box--map'
-                                    onChange={() => this.toPlace = null}
-                                />
-                                <FontAwesomeIcon onClick={this.searchJourney} icon={['fas', 'arrow-circle-right']} color={'#29487d'} />
-                            {/* // </React.Fragment> */}
-                            </div>
-                            :
-                            <div className='fp-c-custom-search__search-box'>
-                            <input className='fp-c-custom-search__search-box--generic'
-                                placeholder='Search' />
-                        {/* // onKeyPress={e => e.key === 'Enter' && updateSearchInput(`/search/${e.target.value}`)} /> */}
-                        </div>
-                    }
-                {/* </div> */}
+                <React.Fragment>
+                    <div className={this.state.searchJourney ? 'fp-c-custom-search__search-box' : 'fp-l-display--none'}>
+                        <input
+                            ref={(c) => {
+                                if (!c || !window.google) {
+                                    return;
+                                }
+                                this.fromSearchBox = new window.google.maps.places.SearchBox(c, { types: ['geocode'] });
+                                this.fromSearchBox.addListener('places_changed', this.from)
+                            }}
+                            placeholder="From..."
+                            type="text"
+                            className='fp-c-custom-search__search-box--map'
+                            onChange={() => this.fromPlace = null}
+                        />
+                        <input
+                            ref={(c) => {
+                                if (!c || !window.google) {
+                                    return;
+                                }
+                                this.toSearchBox = new window.google.maps.places.SearchBox(c, { types: ['geocode'] });
+                                this.toSearchBox.addListener('places_changed', this.to)
+                            }}
+                            placeholder="To..."
+                            type="text"
+                            className='fp-c-custom-search__search-box--map'
+                            onChange={() => this.toPlace = null}
+                        />
+                        <FontAwesomeIcon onClick={this.searchJourney} icon={['fas', 'arrow-circle-right']} color={'#29487d'} />
+                    </div>
+                    <div className={!this.state.searchJourney ? 'fp-c-custom-search__search-box' : 'fp-l-display--none'}>
+                        <input className='fp-c-custom-search__search-box--generic'
+                            placeholder='Search'
+                            onKeyPress={e => {
+                                if(e.key === 'Enter') {
+                                    this.props.changeMood(MOOD.JOURNEY);
+                                    this.props.history.push(`/q/${e.target.value}`)
+                                } } }/>
+                    </div>
+                </React.Fragment>
             </div>
         )
     }

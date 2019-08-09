@@ -48,12 +48,12 @@ function* fetchRelatedUserFeedList({ userId, feedId }) {
   }
 }
 
-function* fetchRelatedUserFeed({ userId, feedId, originalFeedId }) {
+function* fetchRelatedUserFeed({ userId, fotoId, feedId, originalFeedId }) {
   try {
-    let relatedFeed = getRelatedUserFeedFromIndexDb(userId, feedId);
+    let relatedFeed = getRelatedUserFeedFromIndexDb(userId, fotoId, feedId);
     if(!relatedFeed) {
-      relatedFeed = yield call(API.fetchRelatedUserFeed, { userId, feedId });
-      relatedFeed = {...relatedFeed, feedId: originalFeedId}
+      relatedFeed = yield call(API.fetchRelatedUserFeed, { userId, fotoId, feedId });
+      relatedFeed = {...relatedFeed, feedId: originalFeedId, fotoId: fotoId}
     }
     yield put(fetchRelatedUserFeedSuccess({ userId, feedId, relatedFeed }));
   } catch (error) {

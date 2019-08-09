@@ -2,7 +2,6 @@ import React from 'react';
 import './styles.scss';
 import ImageGallery from 'react-image-gallery';
 import { connect } from 'react-redux';
-import { updateMap } from '../../actions';
 
 class Live extends React.Component {
     state = {
@@ -12,9 +11,6 @@ class Live extends React.Component {
             `${process.env.PUBLIC_URL}/data/live/video2.mp4`,
         ],
         'second': [`${process.env.PUBLIC_URL}/data/live/video3.mp4`,]
-    }
-    componentWillMount() {
-        this.props.updateMap({ isFullLayout: false });
     }
     render = () => {
         const images = [];
@@ -42,4 +38,4 @@ class Live extends React.Component {
         )
     }
 }
-export default connect(null, { updateMap })(Live);
+export default connect(null, { })(Live);

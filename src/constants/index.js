@@ -1,6 +1,8 @@
+// TODO: after uploading images data to server the extension of images is changed
 export const GOOGLE_MAP_NOT_FOUND = 'GOOGLE_MAP_NOT_FOUND';
 
 export const DEFAULT_MARKER_PATH = `${process.env.PUBLIC_URL}/data/fotos/App/journey.jpg`;
+export const MARKER = `${process.env.PUBLIC_URL}/data/fotos/App/marker.png`;
 export const APP_RESERVED_FEED_ID = 'APP_RESERVED_FEED_ID';
 export const APP_RESERVED_USER_ID = 'APP_RESERVED_USER_ID';
 export const APP_RESERVED_USER_NAME = 'App';
@@ -13,14 +15,14 @@ export const FOTO_CATEGORY = {
 // ROUTES
 export const journeyPathName = '/home/journey';
 
-export const LIVE=`${process.env.PUBLIC_URL}/live.png`;
 
 // MOOD
 export const MOOD = {
-    HUNGRY: 'HUNGRY',
+    FOOD: 'FOOD',
     TRAVEL: 'TRAVEL',
     JOURNEY: 'JOURNEY',
-    GENERAL: 'GENERAL'
+    FEED: 'FEED',
+    LIVE: 'LIVE'
 };
 
 export const WEATHER = {
@@ -28,9 +30,10 @@ export const WEATHER = {
 }
 
 export const EMOJI = {
-    'HUNGRY': `${process.env.PUBLIC_URL}/hungry.png`,
-    'TRAVEL': `${process.env.PUBLIC_URL}/travel.png`,
-    'JOURNEY': `${process.env.PUBLIC_URL}/journey.png`,
-    'GENERAL': `${process.env.PUBLIC_URL}/general.png`,
-    'RAIN': `${process.env.PUBLIC_URL}/rain.png`,
+    'LIVE': `${process.env.PUBLIC_URL}/live.PNG`,
+    'FOOD': `${process.env.PUBLIC_URL}/hungry.PNG`,
+    'TRAVEL': `${process.env.PUBLIC_URL}/travel.PNG`,
+    'JOURNEY': `${process.env.PUBLIC_URL}/journey.PNG`,
+    'FEED': `${process.env.PUBLIC_URL}/general.PNG`,
+    'RAIN': `${process.env.PUBLIC_URL}/rain.PNG`,
 };

@@ -18,10 +18,10 @@ class StatusContainer extends React.Component {
            {
                this.state.showOptions &&
                <div className='fp-c-status-container__options'>
+               <img onClick={() => this.onChange(MOOD.LIVE)} className='fp-c-status-container__img' src= {EMOJI[MOOD.LIVE]}/>
                <img onClick={() => this.onChange(MOOD.TRAVEL)} className='fp-c-status-container__img' src= {EMOJI[MOOD.TRAVEL]}/>
-               <img onClick={() => this.onChange(MOOD.JOURNEY)} className='fp-c-status-container__img' src= {EMOJI[MOOD.JOURNEY]}/>
-               <img onClick={() => this.onChange(MOOD.GENERAL)} className='fp-c-status-container__img' src= {EMOJI[MOOD.GENERAL]}/>
-               <img onClick={() => this.onChange(MOOD.HUNGRY)} className='fp-c-status-container__img' src= {EMOJI[MOOD.HUNGRY]}/>
+               <img onClick={() => this.onChange(MOOD.FEED)} className='fp-c-status-container__img' src= {EMOJI[MOOD.FEED]}/>
+               <img onClick={() => this.onChange(MOOD.FOOD)} className='fp-c-status-container__img' src= {EMOJI[MOOD.FOOD]}/>
                </div>
            }
         </div>

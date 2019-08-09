@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 
 import { currentUserSelector } from '../../reducers/auth.reducer';
-import { updateMap, changeMood } from '../../actions';
+import { updateMap, changeMood, fetchUserTravel, fetchUserFeed, } from '../../actions';
 
 import HeaderAction from '../HeaderAction';
 import Flyout from '../Flyout';
@@ -16,11 +16,30 @@ import MaxWidthWrapper from '../MaxWidthWrapper';
 
 import styles from './styles';
 import CustomSearchBox from '../Maps/CustomSearchBox';
-import { LIVE, MOOD, WEATHER } from '../../constants';
+import { MOOD, WEATHER } from '../../constants';
 import './styles.scss';
 import StatusContainer from '../StatusContainer';
 
 class Header extends React.Component {
+  updateMood = (mood) => {
+    switch(mood) {
+      case MOOD.FOOD:
+        this.props.history.push('/food');
+        break;
+      case MOOD.LIVE:
+        this.props.history.push('/live');
+        break;
+      default:
+        if(mood === MOOD.TRAVEL) {
+          this.props.fetchUserTravel(this.props.currentUserId)
+        } else {
+          this.props.fetchUserFeed(this.props.currentUserId)
+        }
+        this.props.history.push('/feed');
+        break;
+    }
+    this.props.changeMood(mood);
+  }
   render() {
     let {
       activeFlyout,
@@ -54,11 +73,13 @@ class Header extends React.Component {
       <div className={css(styles.headerContainer)}>
         <div className={css(styles.header)}>
           <MaxWidthWrapper mergeStyles={styles.headerContents}>
-            <div onClick={() => this.props.history.push('/live')} className='fp-c-header__live'>
+            {/* <div onClick={() => this.props.history.push('/live')} className='fp-c-header__live'>
               <img src={LIVE}/>
-            </div>
-            <CustomSearchBox />
-            <StatusContainer onChange={this.props.changeMood} mood={this.props.mood} weather={WEATHER.RAIN}/>
+            </div> */}
+            <CustomSearchBox changeMood={this.props.changeMood}/>
+            <StatusContainer 
+            onChange={this.updateMood}
+            mood={this.props.mood} weather={WEATHER.RAIN}/>
             {/* <div className={css(styles.headerSearch)}>
               <SquareLogo mergeStyles={styles.logo} searchJourney={() => this.setState({searchJourney: true})} />
               <div className='fp-c-header__search-box'>
@@ -94,9 +115,10 @@ Header.propTypes = {
 
 
 const mapStateToProps = state => ({
+  currentUserId: state.auth.currentUserId,
   activeFlyout: state.ui.headerActions.activeFlyout,
   mood: state.ui.headerActions.mood,
   currentUser: currentUserSelector(state)
 });
 
-export default connect(mapStateToProps, { updateMap, changeMood })(withRouter(Header));
+export default connect(mapStateToProps, { updateMap, changeMood, fetchUserTravel, fetchUserFeed, })(withRouter(Header));

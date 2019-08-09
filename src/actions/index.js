@@ -30,6 +30,9 @@ export const FETCH_RELATED_USER_FEED_FAILURE = 'FETCH_RELATED_USER_FEED_FAILURE'
 export const FETCH_USER_JOURNEY = 'FETCH_USER_JOURNEY';
 export const FETCH_USER_JOURNEY_SUCCESS = 'FETCH_USER_JOURNEY_SUCCESS';
 export const FETCH_USER_JOURNEY_FAILURE = 'FETCH_USER_JOURNEY_FAILURE';
+export const FETCH_USER_TRAVEL = 'FETCH_USER_TRAVEL';
+export const FETCH_USER_TRAVEL_SUCCESS = 'FETCH_USER_TRAVEL_SUCCESS';
+export const FETCH_USER_TRAVEL_FAILURE = 'FETCH_USER_TRAVEL_FAILURE';
 
 // MAP Actions
 export const UPDATE_MAP = 'UPDATE_MAP';
@@ -148,9 +151,9 @@ export const fetchRelatedUserFeedListFailure = payload => ({
   type: FETCH_RELATED_USER_FEED_LIST_FAILURE,
   ...payload
 });
-export const fetchRelatedUserFeed = ({ userId, feedId, originalFeedId }) => ({
+export const fetchRelatedUserFeed = ({ userId, fotoId, feedId, originalFeedId }) => ({
   type: FETCH_RELATED_USER_FEED,
-  ...{ userId, feedId, originalFeedId }
+  ...{ userId, fotoId, feedId, originalFeedId }
 })
 export const fetchRelatedUserFeedSuccess = payload => ({
   type: FETCH_RELATED_USER_FEED_SUCCESS,
@@ -171,6 +174,18 @@ export const fetchUserJourneySuccess = parameters => ({
 })
 export const fetchUserJourneyFailure = parameters => ({
   type: FETCH_USER_JOURNEY_FAILURE,
+  ...parameters
+})
+export const fetchUserTravel = userId => ({
+  type: FETCH_USER_TRAVEL,
+  userId
+});
+export const fetchUserTravelSuccess = parameters => ({
+  type: FETCH_USER_TRAVEL_SUCCESS,
+  ...parameters
+})
+export const fetchUserTravelFailure = parameters => ({
+  type: FETCH_USER_TRAVEL_FAILURE,
   ...parameters
 })
 

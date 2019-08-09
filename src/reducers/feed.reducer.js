@@ -6,12 +6,14 @@ import {
     FETCH_RELATED_USER_FEED_LIST_FAILURE,
     FETCH_RELATED_USER_FEED_SUCCESS,
     FETCH_RELATED_USER_FEED_FAILURE,
-    FETCH_USER_JOURNEY_SUCCESS
+    FETCH_USER_JOURNEY_SUCCESS,
+    FETCH_USER_TRAVEL_SUCCESS
 } from '../actions';
 
 const initialState = {
     all: null,
     journey: null,
+    travel: null,
     recommended: null,
 
     activeFeed: null,
@@ -42,6 +44,14 @@ const saveUserJourneyToIndexDB = (journey, userId, latestJournies) => {
     return latestJournies; 
 }
 
+const saveUserTravelToIndexDB = (travel, userId, latestTravel) => {
+    // TODO: arrange in descending order of time the incoming feed and save only maximum latest 30 posts in local IndexDb
+    // and local state.
+    console.log('travel ', latestTravel);
+    return latestTravel; 
+}
+
+
 // ////////////////////
 // Reducers //////////
 // //////////////////
@@ -57,6 +67,14 @@ function journey(state = initialState.journey, action) {
     switch (action.type) {
         case FETCH_USER_JOURNEY_SUCCESS:
             return saveUserJourneyToIndexDB(state, action.userId, action.journies);
+        default:
+            return state
+    }
+}
+function travel(state = initialState.travel, action) {
+    switch (action.type) {
+        case FETCH_USER_TRAVEL_SUCCESS:
+            return saveUserTravelToIndexDB(state, action.userId, action.travel);
         default:
             return state
     }
@@ -94,6 +112,7 @@ function relatedFeed(state = initialState.relatedFeed, action) {
 export default combineReducers({
     all,
     journey,
+    travel,
     activeFeed,
     relatedFeedList,
     relatedFeed
