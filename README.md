@@ -14,6 +14,5 @@ This repo strives to be modern. It uses:
 - React Router v4
 - Redux Saga
 - Reselect
-- Inline styles (through Aphrodite)
 - Create React App, unejected (for as long as possible)
 - AirBnb ESLint config

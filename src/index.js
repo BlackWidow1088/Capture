@@ -63,3 +63,11 @@ render(
   document.getElementById('root')
   // 101407193474
 );
+
+
+// 1) make immutable objects. create entire new objects after modifying. use slice, spread, concat, Object.assign on objects, array for better
+// performance and building pure components.
+// 2)  <button onClick={(e) => this.handleClick(e)}> NOT RECOMMENDED.. child components gets re-rendered again
+// <button onClick={handleClick}> RECOMMENDED.
+// handleCLick = (e) => {console.log('e')}
+// 3) don;t use index of arrays as key for iterating rect elements.
